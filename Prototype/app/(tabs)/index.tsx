@@ -7,10 +7,10 @@ import {
 import Board from '@/components/Board';
 import Piece, { PieceType } from '@/components/Pieces';
 
-type Coord = { row: number; col: number };
-type BoardMatrix = (PieceType | null)[][];
+type Coord = { row: number; col: number }; //coordinate of moves 
+type BoardMatrix = (PieceType | null)[][]; //matrix to handle the board
 
-// initial chess setup
+// initial board with pieces 
 const initialBoard: BoardMatrix = [
   ['bR','bN','bB','bQ','bK','bB','bN','bR'],
   Array(8).fill('bP'),
@@ -24,6 +24,7 @@ export default function HomeScreen() {
   const [currentTurn, setCurrentTurn] = useState<'w' | 'b'>('w');
   const [selected, setSelected] = useState<Coord | null>(null);
 
+  //handles move logic when user presses on any cell with piece 
   const onSquarePress = (row: number, col: number) => {
     //If nothing selected, pick up your own piece
     if (!selected) {
@@ -65,7 +66,7 @@ export default function HomeScreen() {
         onSquarePress={onSquarePress}
       />
 
-      {/* ─── Optional: show which square is selected ─── */}
+      {/* ─── show which square is selected ─── */}
       {selected && (
         <Text style={styles.selText}>
           Selected: {selected.row},{selected.col}

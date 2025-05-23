@@ -1,50 +1,59 @@
-# Welcome to your Expo app 👋
+Expo Chess
+A simple, cross-platform Chess game built with Expo and React Native (Web, iOS, Android).
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Features
+- 8×8 Board with alternating light & dark squares
+- Chess.com “Neo” piece graphics loaded via CDN (no local assets)
+- Turn Tracking: White/Black indicator above the board
+- Free Placement Mode: Tap to pick up a piece of your color, tap any square to place it
+- Modular Components: Board, Piece components and move logic separated for clarity
 
-## Get started
+Installation
+Prerequisites:
+- Node ≥14
+- npm or yarn
+- Expo CLI (install globally with: npm install -g expo-cli)
 
-1. Install dependencies
+Steps:
+Clone the repo:
+git clone https://github.com/yourusername/expo-chess.git
+cd Prototype
+Install dependencies:
+npm install
+or
+yarn install
 
-   ```bash
-   npm install
-   ```
+Start the app:
+For mobile (iOS/Android simulator or physical device):
+expo start
 
-2. Start the app
+For web:
+expo start --web
 
-   ```bash
-   npx expo start
-   ```
+Usage
+Tap a piece on your turn (white starts).
+Tap any square to move it.
+Watch the turn indicator update.
+Project Structure
 
-In the output, you'll find options to open the app in a
+app/
+(tabs)/
+index.tsx      # HomeScreen with game logic and turn indicator
+components/
+Board.tsx       # Renders the 8×8 grid and pieces
+Piece.tsx       # Fetches and displays Neo piece PNGs by type
+assets/           # Static assets (if any)
+README.txt       # This file
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Customization
+Board colors: pass lightColor & darkColor props to 
+Board size: adjust size prop (default = viewport min - 32px)
+Piece theme: swap pieceUris in Piece.tsx to another CDN or local assets
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Future Improvements
+- Legal Move Highlights: integrate move generation and visuals
+- Advanced Rules: castling, en-passant, promotion, check/checkmate detection
+- Drag & Drop: smooth drag preview instead of tap-to-place
+- Animations: piece slide animations
+- Multiplayer: online games with WebSockets or Firebase
+- AI to play user

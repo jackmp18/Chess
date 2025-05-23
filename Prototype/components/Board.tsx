@@ -21,7 +21,7 @@ const DEFAULT_SIZE = Math.min(W, H) - 32;
 
 const Board: React.FC<BoardProps> = ({
   size = DEFAULT_SIZE,
-  boardState,
+  boardState, //used to track pieces
   onSquarePress,
   lightColor = '#eeeed2',
   darkColor = '#769656',
