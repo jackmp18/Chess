@@ -1,5 +1,5 @@
 import React from 'react';
-import { Image, StyleSheet, ImageResizeMode } from 'react-native';
+import { View, Image, StyleSheet, ImageResizeMode } from 'react-native';
 
 export type PieceType = 
   | 'wK' | 'wQ' | 'wR' | 'wB' | 'wN' | 'wP'
@@ -27,12 +27,14 @@ interface PieceProps {
   size: number;
 }
 
-export const Pieces: React.FC<PieceProps> = ({ type, size }) => (
-  <Image
-    source={{ uri: pieceUris[type] }}
-    style={[styles.img, { width: size, height: size }]}
-    resizeMode={'contain' as ImageResizeMode}
-  />
+export const Piece: React.FC<PieceProps> = ({ type, size }) => (
+  <View style={{ width: size, height: size }}>
+    <Image
+        source={{ uri: pieceUris[type] }}
+        style={[styles.img, { width: size, height: size }]}
+        resizeMode={'contain' as ImageResizeMode}
+    />
+  </View>
 );
 
 const styles = StyleSheet.create({
@@ -43,4 +45,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Pieces;
+export default Piece;
