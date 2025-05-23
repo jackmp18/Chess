@@ -6,9 +6,11 @@ import {
     Dimensions,
     GestureResponderEvent,
 } from 'react-native';
+import { Pieces, PieceType } from '@/components/Pieces';
 
 type BoardProps = {
     size?: number;
+    boardState: (PieceType | null)[][];
     onSqquarePress?: (row: number, col: number, e: GestureResponderEvent) => void;
     lightColor?: string;
     darkColor?: string;
@@ -19,6 +21,7 @@ const DEFAULT_BOARD_SIZE = Math.min(screenW, screenH) - 32; //defualt board size
 
 const Board: React.FC<BoardProps> = ({
     size = DEFAULT_BOARD_SIZE,
+    boardState,
     onSqquarePress,
     lightColor = '#eeeed2',
     darkColor = '#769656'
@@ -40,7 +43,11 @@ const Board: React.FC<BoardProps> = ({
                                     backgroundColor: isLight ? lightColor : darkColor,
                                     flexShrink: 0,
                                 }}
-                            />
+                            >
+                                {boardState[row][col] && (
+                                    <Pieces type={boardState[row][col]!} size={squareSize} />
+                                )}
+                            </Pressable>
                         );
                     })}
                 </View>
